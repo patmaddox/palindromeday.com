@@ -1,5 +1,11 @@
 require 'palindrome_day'
 
+class Date
+  def inspect
+    to_s
+  end
+end
+
 describe PalindromeDay do
   it { PalindromeDay.in_year(2010).should == Date.parse('01/02/2010') }
   it { PalindromeDay.in_year(2011).should == Date.parse('11/02/2011') }
@@ -21,4 +27,7 @@ describe PalindromeDay do
 
   it { PalindromeDay.europe(2010).should == Date.parse('02/01/2010') }
   it { PalindromeDay.europe(2011).should == Date.parse('02/11/2011') }
+
+  it { PalindromeDay.for_day(:month => 1, :day => 2).should == Date.parse('01/02/2010') }
+  it { PalindromeDay.for_day(:month => 10, :day => 22).should == Date.parse('10/22/2201') }
 end

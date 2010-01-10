@@ -15,6 +15,15 @@ class PalindromeDay
     find_next :europe, date
   end
 
+  def self.for_day(options={})
+    month = options.fetch(:month).to_s
+    day = options.fetch(:day).to_s
+    month = '0'+month if month.to_i < 10
+    day = '0'+day if day.to_i < 10
+    year = day.reverse + month.reverse
+    self.next Date.parse("#{month}/#{day}/#{year}")
+  end
+
   private
 
   def self.find_next(finder, start_date)
