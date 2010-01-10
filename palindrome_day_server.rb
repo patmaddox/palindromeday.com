@@ -18,10 +18,10 @@ helpers do
     "<p><i>Written by <a href='http://www.patmaddox.com'>Pat Maddox</a></p>"
   end
 
-  def page(location, content_array)
+  def page(location, date, content_array)
     [
       "<html>",
-      "<head><title>Palindrome Day #{location}</title></head>",
+      "<head><title>Palindrome Day #{location} - next on #{humanize date}</title></head>",
       "<body>",
       content_array,
       footer,
@@ -33,7 +33,7 @@ end
 
 get '/' do
   date = PalindromeDay.next
-  page("USA", [
+  page("USA", date, [
     "<h1>Next Palindrome Day in the United States</h1>",
     "<h2>#{humanize date} (#{numbers_america date})</h2>",
     "<p>Do you live in <a href='/europe'>Europe</a>?"
@@ -42,7 +42,7 @@ end
 
 get '/europe' do
   date = PalindromeDay.next_europe
-  page("Europe", [
+  page("Europe", date, [
     "<h1>Next Palindrome Day in Europe</h1>",
     "<h2>#{humanize date} (#{numbers_europe date})</h2>",
     "<p>Do you live in the <a href='/'>United States</a>?"
