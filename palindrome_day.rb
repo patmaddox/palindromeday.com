@@ -7,19 +7,19 @@ class PalindromeDay
     Europe.new(year).to_date
   end
 
-  def self.next
-    find_next :in_year
+  def self.next(date = Date.today)
+    find_next :in_year, date
   end
 
-  def self.next_europe
-    find_next :europe   
+  def self.next_europe(date = Date.today)
+    find_next :europe, date
   end
 
   private
 
-  def self.find_next(finder)
+  def self.find_next(finder, start_date)
     this_year = Date.today.year
-    while (palindrome_day = send(finder, this_year)).nil?
+    while (palindrome_day = send(finder, this_year)).nil? || palindrome_day < start_date
       this_year += 1
     end
     palindrome_day    
