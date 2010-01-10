@@ -19,7 +19,8 @@ helpers do
   end
 
   def footer
-    "<p><i><a href='/'>palindromeday.com</a> written by <a href='http://www.patmaddox.com'>Pat Maddox</a></i></p>"
+    "<p><i><a href='/'>palindromeday.com</a> written by <a href='http://www.patmaddox.com'>Pat Maddox</a>" +
+    " - <a href='http://github.com/patmaddox/palindromeday.com'>Fork me on github</i></p>"
   end
 
   def page(location, date, content_array)
@@ -62,7 +63,7 @@ helpers do
   def birthday_form
     months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     [
-      "<form action='/#{location}'>",
+      "<form action='/'>",
       "Look up Palindrome Day on your birthday!",
       "<select name='month' id='month_select' onchange='setDay()'>",
       months.collect {|month| "<option value='#{months.index(month)}'>#{month}</option>" },
