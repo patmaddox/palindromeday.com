@@ -21,7 +21,7 @@ helpers do
   def page(location, date, content_array)
     [
       "<html>",
-      "<head><title>Palindrome Day #{location} - next on #{humanize date}</title></head>",
+      "<head><title>Palindrome Day #{location} - next one on #{humanize date}</title></head>",
       "<body>",
       content_array,
       footer,
