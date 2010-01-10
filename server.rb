@@ -13,24 +13,38 @@ helpers do
   def numbers_europe(date)
     date.strftime '%d-%m-%Y'
   end
+
+  def footer
+    "<p><i>Written by <a href='http://www.patmaddox.com'>Pat Maddox</a></p>"
+  end
+
+  def page(location, content_array)
+    [
+      "<html>",
+      "<head><title>Palindrome Day #{location}</title></head>",
+      "<body>",
+      content_array,
+      footer,
+      "</body>",
+      "</html>"
+    ].flatten.join "\n"
+  end
 end
 
 get '/' do
   date = PalindromeDay.next
-  parts = [
+  page("USA", [
     "<h1>Next Palindrome Day in the United States</h1>",
     "<h2>#{humanize date} (#{numbers_america date})</h2>",
     "<p>Do you live in <a href='/europe'>Europe</a>?"
-  ]
-  parts.join "\n"
+  ])
 end
 
 get '/europe' do
   date = PalindromeDay.next_europe
-  parts = [
+  page("Europe", [
     "<h1>Next Palindrome Day in Europe</h1>",
     "<h2>#{humanize date} (#{numbers_europe date})</h2>",
     "<p>Do you live in the <a href='/'>United States</a>?"
-  ]
-  parts.join "\n"
+  ])
 end
