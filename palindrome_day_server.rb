@@ -19,7 +19,7 @@ helpers do
   end
 
   def footer
-    "<p><i><a href='/'>palindromeday.com</a> written by <a href='http://www.patmaddox.com'>Pat Maddox</a>" +
+    "<p><i><a href='/'>palindromeday.com</a> created by <a href='http://www.patmaddox.com'>Pat Maddox</a>" +
     " - <a href='http://github.com/patmaddox/palindromeday.com'>Fork me on github</i></p>"
   end
 
