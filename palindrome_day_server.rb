@@ -38,6 +38,7 @@ helpers do
       content_array,
       footer,
       "<input id='year_field' type='hidden' value='#{params[:year] || Date.today.year}'/>",
+      google_analytics,
       "</body>",
       "</html>"
     ].flatten.join "\n"
@@ -74,6 +75,20 @@ helpers do
       "<input type='submit'/>",
       "</form>",
     ]
+  end
+
+  def google_analytics
+    <<-FUNKY
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-12414223-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+    FUNKY
   end
 end
 
