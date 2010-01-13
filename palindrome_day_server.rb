@@ -126,22 +126,6 @@ get '/europe' do
   end
 end
 
-get '/:month/:day' do
-  date = PalindromeDay.for_day :month => params[:month], :day => params[:day]
-  message = if date == Date.today
-    "is today!  HAPPY BIRTHDAY!!!!!!!!!"
-  elsif date < Date.today
-    "was in #{date.year}"
-  else
-    "will be in #{date.year}"
-  end
-  page("", date, [
-    "<h1>Palindrome Day for #{month_and_day date} #{message}</h1>",
-    year_form,
-    birthday_form
-  ])  
-end
-
 get '/:year' do
   date = PalindromeDay.next(Date.parse("01/01/#{params[:year]}"))
   page("USA", date, [
@@ -162,4 +146,20 @@ get '/europe/:year' do
     birthday_form,
     "<p>Do you live in the <a href='/#{params[:year]}'>United States</a>?</p>"
   ])
+end
+
+get '/:month/:day' do
+  date = PalindromeDay.for_day :month => params[:month], :day => params[:day]
+  message = if date == Date.today
+    "is today!  HAPPY BIRTHDAY!!!!!!!!!"
+  elsif date < Date.today
+    "was in #{date.year}"
+  else
+    "will be in #{date.year}"
+  end
+  page("", date, [
+    "<h1>Palindrome Day for #{month_and_day date} #{message}</h1>",
+    year_form,
+    birthday_form
+  ])  
 end
